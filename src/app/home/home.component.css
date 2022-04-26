@@ -1,0 +1,16 @@
+#background{
+background-color: #121129;
+/* background-color: #121230; */
+height: 100%;
+}
+
+.botao{
+    text-align: center;
+    padding-top: center;
+    align-items: center;
+    color: white;
+    font-weight: 400;
+    font-size: 20px;
+    background-color: #045782;
+    border-radius: 20px;
+}
