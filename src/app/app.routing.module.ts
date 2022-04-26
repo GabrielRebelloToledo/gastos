@@ -9,6 +9,7 @@ import { CadastroAlunoComponent } from './aluno/cadastro-aluno/cadastro-aluno.co
 import { ListaAlunoComponent } from './aluno/lista-aluno/lista-aluno.component';
 import { CadastroCategoriasComponent } from './aluno/cadastro-categorias/cadastro-categorias.component';
 import { CadastroDespesasComponent } from './aluno/cadastro-despesas/cadastro-despesas.component';
+import { DashboardComponent } from './aluno/dashboard/dashboard.component';
 
 const routes: Routes = [
     {
@@ -24,6 +25,16 @@ const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'dash',
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'dash/:id1/:id2',
+        component: DashboardComponent,
         canActivate: [AuthGuard]
     },
     {

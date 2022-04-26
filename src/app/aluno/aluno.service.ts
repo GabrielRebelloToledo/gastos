@@ -54,6 +54,7 @@ export class AlunoService {
     if (!id) return EMPTY;
     return this.http.get<Receitas>(`${API}aluno/${id}`);
   }
+
   getByIdCategoria(id) {
     if (!id) return EMPTY;
     return this.http.get<Categoria>(`${API}aluno/${id}`);
@@ -72,4 +73,14 @@ export class AlunoService {
   delete(id) {
     return this.http.delete<Receitas[]>(`${API}aluno/${id}`);
   }
+
+  getallReceitaContaCorrente(p1,p2){
+    return this.http.get<Receitas[]>(`${API}receita/${p1}/${p2}`);
+  }
+  getallReceitaContaPoup(p1,p2){
+    return this.http.get<Receitas[]>(`${API}receita/poup/${p1}/${p2}`);
+  }
+
 }
+
+

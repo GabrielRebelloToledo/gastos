@@ -8,13 +8,14 @@ import { ListaAlunoComponent } from './lista-aluno/lista-aluno.component';
 import { AppRoutingModule } from '../app.routing.module';
 import { CadastroCategoriasComponent } from './cadastro-categorias/cadastro-categorias.component';
 import { CadastroDespesasComponent } from './cadastro-despesas/cadastro-despesas.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
 @NgModule({
   declarations: [
     CadastroAlunoComponent, 
-    ListaAlunoComponent, CadastroCategoriasComponent, CadastroDespesasComponent
+    ListaAlunoComponent, CadastroCategoriasComponent, CadastroDespesasComponent, DashboardComponent
   ],
   imports: [
     CommonModule,

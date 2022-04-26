@@ -1,0 +1,71 @@
+.back {
+    background-image: url('../../../assets/fundo.PNG');
+    background-repeat: no-repeat;
+    background-size: 1366px;
+}
+
+.boxs {
+    width: 302.4px;
+    height: 302.4px;
+    /* border: 1px solid red; */
+    border-radius: 50px;
+    background-color: rgb(154, 205, 76);
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+}
+
+.cabecalhos {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    width: 262, 40;
+    height: 60.4px;
+    background-color: rgb(61, 151, 222);
+    padding-top: 1px;
+}
+
+.paragrafo {
+    text-align: center;
+    padding-top: 15px;
+    color: white
+}
+
+.acionadores {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.valores {
+    padding-left: 50px;
+    padding-top: 80px;
+}
+
+.c-loader {
+    animation: is-rotating 1s infinite;
+    border: 6px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: #51d4db;
+    height: 50px;
+    width: 50px;
+}
+
+@keyframes is-rotating {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.ajuste {
+    margin-left: 100px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.btn1 {
+    color: white;
+    background-color: rgb(5, 46, 48);
+    margin-left: 1%;
+    border-radius: 10px;
+    border: none;
+    margin-top: 1%;
+}
