@@ -25,37 +25,37 @@ const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent,
-        canActivate: [AuthGuard]
+        /* canActivate: [AuthGuard] */
     },
     {
         path: 'dash',
         component: DashboardComponent,
-        canActivate: [AuthGuard]
+        /* canActivate: [AuthGuard] */
     },
     {
         path: 'dash/:id1/:id2',
         component: DashboardComponent,
-        canActivate: [AuthGuard]
+        /* canActivate: [AuthGuard] */
     },
     {
         path: 'cadastrar/receita',
         component: CadastroAlunoComponent,
-        canActivate: [AuthGuard]
+        /* canActivate: [AuthGuard] */
     },
     {
         path: 'lista/aluno',
         component: ListaAlunoComponent,
-        canActivate: [AuthGuard]
+       /*  canActivate: [AuthGuard] */
     },
     {
         path: 'cadastrar/categoria',
         component: CadastroCategoriasComponent,
-        canActivate: [AuthGuard]
+        /* canActivate: [AuthGuard] */
     },
     {
         path: 'cadastrar/despesas',
         component: CadastroDespesasComponent,
-        canActivate: [AuthGuard]
+        /* canActivate: [AuthGuard] */
     }
     
 ]
