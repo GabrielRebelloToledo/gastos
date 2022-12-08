@@ -1,0 +1,58 @@
+<app-header></app-header>
+
+<div class="container">
+    <form [formGroup]="bancoForm" (submit)="submit()">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm mb-3 mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Abreviatura:</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm" formControlName="abreviatura">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm mb-3 mt-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Nome Banco:</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm" formControlName="nomeBanco">
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm mb-3 mt-1">
+                        <a class="btn btn-sm btn-success text-white" (click)="submit()">Salvar</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </form>
+</div>
+
+<div class="col-md-12">
+    <a class="btn btn-danger btn-sm text-white mb-1" (click)="pesquisaBanco()">Carregar</a>
+    <table class="table table-hover table-sm text-center">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Abreviatura</th>
+                <th scope="col">Nome do Banco</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let banco of ListaBanco">
+                <th scope="row">{{banco.id}}</th>
+                <td>{{banco.abreviatura}}</td>
+                <td>{{banco.nomeBanco}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

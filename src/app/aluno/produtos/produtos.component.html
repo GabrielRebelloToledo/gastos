@@ -1,0 +1,94 @@
+<app-header></app-header>
+
+<div class="container">
+    <form [formGroup]="produtosForm" (submit)="submit()">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm mb-3 mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Nome do produto:</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm" formControlName="nomeProd">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm mb-3 mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Minimo:</span>
+                        </div>
+                        <input type="number" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm" formControlName="min">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <!-- <div class="custom-control custom-checkbox mt-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label pt-1" for="customCheck1"
+                            formControlName="analitico">Analitico</label>
+                    </div> -->
+                    <div class="input-group input-group-sm mb-3 ">
+                        <div class="input-group input-group-sm mb-3 mt-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Maximo:</span>
+                            </div>
+                            <input type="number" class="form-control" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="max">
+                        </div>
+                    </div>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    
+                    <div class="input-group input-group-sm mb-3 ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Ativo:</span>
+                        </div>                        
+                            <select id="inputState" class="form-control" formControlName="ativo" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <option value="0">Não</option>
+                                <option value="1" selected>Sim</option>
+                              </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row ">
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm mb-3 mt-1">
+                        <a class="btn btn-sm btn-success text-white" (click)="submit()">Salvar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <div class="col-md-12">
+        <a class="btn btn-danger btn-sm text-white mb-1" (click)="pesquisaProdutos()">Carregar</a>
+        <table class="table table-hover table-sm text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome do produto</th>
+                    <th scope="col">Minimo</th>
+                    <th scope="col">Maximo</th>
+                    <th scope="col">Ativo</th>
+    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let produtos of ListaProdutos">
+                    <th scope="row">{{produtos.id}}</th>
+                    <td>{{produtos.nomeProd}}</td>
+                    <td>{{produtos.min}}</td>
+                    <td>{{produtos.max}}</td>
+                    <td *ngIf="produtos.ativo == '1'">Sim</td>
+                    <td *ngIf="produtos.ativo == '0'">Não</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

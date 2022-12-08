@@ -1,0 +1,485 @@
+<app-header></app-header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" *ngIf="cadastroProduto">
+                <a class="nav-link" (click)="movimento('g')" style="cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                        height="16" fill="currentColor" class="bi bi-grid-3x3" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5V5h4V1H1.5zM5 6H1v4h4V6zm1 4h4V6H6v4zm-1 1H1v3.5a.5.5 0 0 0 .5.5H5v-4zm1 0v4h4v-4H6zm5 0v4h3.5a.5.5 0 0 0 .5-.5V11h-4zm0-1h4V6h-4v4zm0-5h4V1.5a.5.5 0 0 0-.5-.5H11v4zm-1 0V1H6v4h4z" />
+                    </svg> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active" *ngIf="!cadastroProduto">
+                <a class="nav-link" (click)="movimento('c')" style="cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                        height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                        <path
+                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                    </svg> <span class="sr-only">(current)</span></a>
+            </li>
+            
+                <li class="nav-item mr-1 " *ngIf="!cadastroProduto">
+                    
+                    <div class="input-group input-group-sm  ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Data Inico:</span>
+                        </div>
+                        <input type="date" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm" id="dt1">
+                    </div>
+
+                </li>
+            
+                <li class="nav-item" *ngIf="!cadastroProduto">
+                    
+                    <div class="input-group input-group-sm  ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Data Fim:</span>
+                        </div>
+                        <input type="date" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm" id="dt2">
+                    </div>
+                    
+                </li>
+                
+                <li>
+                    <div class="form-check ml-1 mt-1" *ngIf="!cadastroProduto">
+                        <input class="form-check-input" type="checkbox" value="receita" id="flexCheckChecked1" (change)="termsChange($event)">
+                        <label class="form-check-label" for="flexCheckChecked1" >
+                          Receita
+                        </label>
+                      </div>
+                </li>
+                <li>
+                    <div class="form-check ml-1 mt-1" *ngIf="!cadastroProduto">
+                        <input class="form-check-input" type="checkbox" value="despesa" id="flexCheckChecked2" (change)="termsChange($event)">
+                        <label class="form-check-label" for="flexCheckChecked2" >
+                          Despesa
+                        </label>
+                      </div>
+                </li>
+                <li>
+                    <div class="form-check ml-1 mt-1" *ngIf="!cadastroProduto">
+                        <input class="form-check-input" type="checkbox" value="real" id="flexCheckChecked3" (change)="termsChange($event)">
+                        <label class="form-check-label" for="flexCheckChecked3" >
+                          Real
+                        </label>
+                      </div>
+                </li>
+                <li>
+                    <div class="form-check ml-1 mt-1" *ngIf="!cadastroProduto">
+                        <input class="form-check-input" type="checkbox" value="provisao" id="flexCheckChecked4" (change)="termsChange($event)">
+                        <label class="form-check-label" for="flexCheckChecked4" >
+                            Provis.
+                        </label>
+                      </div>
+                </li>
+                <li>
+                    <div class="form-check ml-1 mt-1" *ngIf="!cadastroProduto">
+                        <input class="form-check-input" type="checkbox" value="pendentes" id="flexCheckChecked5" (change)="termsChange($event)">
+                        <label class="form-check-label" for="flexCheckChecked5" >
+                          Pendentes
+                        </label>
+                      </div>
+                </li>
+                <li>
+                    <div class="form-check ml-1 mt-1" *ngIf="!cadastroProduto">
+                        <input class="form-check-input" type="checkbox" value="baixados" id="flexCheckChecked6" (change)="termsChange($event)">
+                        <label class="form-check-label" for="flexCheckChecked6" >
+                            Baixados
+                        </label>
+                      </div>
+                </li>
+                <li class="nav-item active" *ngIf="!cadastroProduto">
+                    <a class="nav-link" (click)="pesquisaMovimentos()" style="cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                        <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+                      </svg><span class="sr-only">(current)</span></a>
+                </li>
+        </ul>
+
+    </div>
+</nav>
+<div class="container" *ngIf="cadastroProduto">
+    <form [formGroup]="FinanceiroForm" (submit)="submit()">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-5 bg1">
+                    <h4 class="mt-2">Cadastros Gerais</h4>
+                    <div class="col-md-12">
+                        <div class="input-group input-group-sm mb-3 ">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Fornecedores:</span>
+                            </div>
+                            <select id="inputState " class="form-control" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="fornecedores">
+                                <option selected>Selecione</option>
+                                <option *ngFor="let fornecedor of ListaFornecedores" [value]="">
+                                    {{fornecedor.nomeFantasia}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-group input-group-sm mb-3 ">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Conta:</span>
+                            </div>
+                            <select id="inputState " class="form-control" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="conta">
+                                <option selected>Selecione</option>
+                                <option *ngFor="let conta of ListaContaBancaria" [value]="">
+                                    {{conta.descricao}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-group input-group-sm mb-3 ">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Centro de Custo:</span>
+                            </div>
+                            <select id="inputState " class="form-control" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="centro">
+                                <option selected>Selecione</option>
+                                <option *ngFor="let centro of ListaCentroCusto" [value]="">
+                                    {{centro.nomeCentro}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-group input-group-sm mb-3 ">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Natureza:</span>
+                            </div>
+                            <select id="inputState " class="form-control" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="natureza">
+                                <option selected>Selecione</option>
+                                <option *ngFor="let natureza of ListaNatureza" [value]="">
+                                    {{natureza.nomeNatureza}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="input-group input-group-sm mb-3 ">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Nº nota:</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Small"
+                                    aria-describedby="inputGroup-sizing-sm" formControlName="nNota">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Tipo Titulo:</span>
+                                </div>
+                                <select id="inputState " class="form-control" aria-label="Small"
+                                    aria-describedby="inputGroup-sizing-sm" formControlName="titulo">
+                                    <option selected>Selecione</option>
+                                    <option *ngFor="let titulo of ListaTipostitulo" [value]="">
+                                        {{titulo.descricao}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Tipo:</span>
+                                </div>
+                                <select id="inputState " class="form-control" aria-label="Small"
+                                    aria-describedby="inputGroup-sizing-sm" formControlName="receita_despesa">
+                                    <option value="d">Despesa</option>
+                                    <option value="r" selected>Receita</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group input-group-sm  ">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Nego.:</span>
+                                    </div>
+                                    <input type="date" class="form-control" aria-label="Small"
+                                        aria-describedby="inputGroup-sizing-sm" formControlName="dNegociacao">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group input-group-sm  ">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Venc.:</span>
+                                    </div>
+                                    <input type="date" class="form-control" aria-label="Small"
+                                        aria-describedby="inputGroup-sizing-sm" formControlName="dVencimento">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 bg2">
+                    <h4 class="mt-2">Cadastro do Produto</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group input-group-sm ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Produto:</span>
+                                </div>
+                                <select id="inputState " class="form-control" aria-label="Small"
+                                    aria-describedby="inputGroup-sizing-sm" formControlName="nomeProd">
+                                    <option selected>Selecione</option>
+                                    <option *ngFor="let produto of ListaProdutos" [value]="">
+                                        {{produto.nomeProd}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group input-group-sm  ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Marca:</span>
+                                </div>
+                                <select id="inputState " class="form-control" aria-label="Small"
+                                    aria-describedby="inputGroup-sizing-sm" formControlName="nomeMarca">
+                                    <option selected>Selecione</option>
+                                    <option *ngFor="let marcas of ListaMarcas" [value]="">{{marcas.nomeMarca}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group input-group-sm  mt-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Valor Unit.:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Small"
+                                        aria-describedby="inputGroup-sizing-sm" id="valorUn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group input-group-sm  mt-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Quant.:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Small"
+                                        aria-describedby="inputGroup-sizing-sm" id="quant" (blur)="calcular()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group input-group-sm  mt-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Valor total:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Small"
+                                        aria-describedby="inputGroup-sizing-sm" value="{{valorTotalcaptura}}" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Parcelado:</span>
+                                </div>
+                                <select id="inputState parc" class="form-control" formControlName="parcelado"
+                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                    <option value="0">Não</option>
+                                    <option value="1" selected>Sim</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group input-group-sm ">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Nº Parcela:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Small"
+                                        aria-describedby="inputGroup-sizing-sm" formControlName="nParcela">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Provis.:</span>
+                                </div>
+                                <select id="inputState " class="form-control" aria-label="Small"
+                                    aria-describedby="inputGroup-sizing-sm" formControlName="provisao">
+                                    <option value="0">Não</option>
+                                    <option value="1" selected>Sim</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="input-group input-group-sm mb-3 ">
+                                <div class="input-group input-group-sm mb-3 ">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">Histórico:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Small"
+                                        aria-describedby="inputGroup-sizing-sm" formControlName="historico">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-end">
+                        <div class="col-md-3">
+                            <div class="input-group input-group-sm mb-3 mt-1 p-1">
+                                <a class="btn btn-sm btn-outline-primary  pt-1 pb-1 pl-3 pr-3"
+                                    style="font-size: 18px; color:black" (click)="capturarProdutos()">+</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row container bg3">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="input-group input-group-sm mb-3 mt-1">
+                                <a class="btn btn-sm btn-success text-white" (click)="gravar()">Gravar</a>
+                                <a class="btn btn-sm btn-warning text-white ml-2" (click)="novoCadastro()">Novo</a>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-9">
+                            <table class="table table-hover table-sm text-center table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Código</th>
+                                        <th scope="col">Produto</th>
+                                        <th scope="col">Marca</th>
+                                        <th scope="col">Valor Unit.</th>
+                                        <th scope="col">Quantidade</th>
+                                        <th scope="col">V. Total</th>
+                                        <th scope="col">Parcelado</th>
+                                        <th scope="col">Nº Parcela</th>
+                                        <!-- <th scope="col">Baixado</th>
+                                        <th scope="col">Dt Baixa:</th> -->
+                                        <th scope="col">Histórico</th>
+                                        <th scope="col">Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let produto of data; index as i">
+                                        <th scope="row">{{i}}</th>
+                                        <td>{{produto.nomeProd}}</td>
+                                        <td>{{produto.nomeMarca}}</td>
+                                        <td>{{produto.valorUn}}</td>
+                                        <td>{{produto.quantidade}}</td>
+                                        <td>{{produto.valorTotal}}</td>
+                                        <td>{{produto.parcelado}}</td>
+                                        <td>{{produto.nParcela}}</td>
+                                        <td>{{produto.baixado}}</td>
+                                        <td>{{produto.dtBaixa}}</td>
+                                        <td>{{produto.historico}}</td>
+                                        <td><a class="btn btn-danger" (click)="removerProd(i)">-</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container" *ngIf="!cadastroProduto">
+    <div class="col-md-12">
+        <table class="table table-hover table-sm text-center  table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Fornecedor</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Provisão</th>
+                    <th scope="col">Nº Nota</th>
+                    <th scope="col">Vl. Unit.</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Vl. Total</th>
+                    <th scope="col">Vencimento</th>
+                    <th scope="col">Conta</th>
+                    <th scope="col">Baixa</th>
+                    <th scope="col">Dt Baixa</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fin of ListaMovimentos">
+                    <th scope="row">{{fin.id}}</th>
+                    <td>{{fin.fornecedores}}</td>
+                    <td>{{fin.nomeProd}}</td>
+                    <td>{{fin.nomeMarca}}</td>
+                    <td *ngIf="fin.receita_despesa == 'r'">Receita</td>
+                    <td *ngIf="fin.receita_despesa == 'd'">Despesa</td>
+                    <td *ngIf="fin.provisao == '1'">Sim</td>
+                    <td *ngIf="fin.provisao == '0'">Não</td>
+                    <td>{{fin.nNota}}</td>
+                    <td>{{fin.valorUn}}</td>
+                    <td>{{fin.Quantidade}}</td>
+                    <td>{{fin.valorTotal}}</td>
+                    <td>{{fin.dVencimento }}</td>
+                    <td>{{fin.conta}}</td>
+                    <td *ngIf="fin.baixado == '1'">Sim</td>
+                    <td *ngIf="fin.baixado == '0'">Não</td>
+                    <td>{{fin.dtBaixa}}</td>
+                    <td *ngIf="fin.baixado == '0'">
+                        <a (click)="baixar(fin.id)" class="btn btn-success btn-sm">Baixar</a>
+                    </td>
+                    <td >
+                        <a  class="btn btn-success btn-sm">Editar</a>
+                    </td>
+                    <td >
+                        <a (click)="deletarAlunoMovimento(fin.id)" class="btn btn-success btn-sm">Deletar</a>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <div class="col-md-11">
+            <div class="row" style="background-color: rgb(223, 223, 223);">
+                <div class="col-md-3">
+                    
+                    <div *ngFor="let saldo of ListaReceita">
+                        Receita: {{saldo.receita}}
+                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div *ngFor="let saldo of ListaDespesa; ">
+                                        Despesa: {{saldo.despesa}}
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div *ngIf="receitaS >= 0">
+                                        Receita - Despesa: {{receitaS - despesaS}}
+                                    </div>
+                     
+                                </div>
+                                <div class="col-md-3">
+                
+                                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>

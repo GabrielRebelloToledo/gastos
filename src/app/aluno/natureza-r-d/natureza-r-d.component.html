@@ -1,0 +1,110 @@
+<app-header></app-header>
+
+<div class="container">
+    <form [formGroup]="naturezaForm" (submit)="submit()">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm mb-3 mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Nome da natureza:</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm" formControlName="nomeNatureza">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm mb-3 mt-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Grupo Pai:</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm" formControlName="grupoPai">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm mb-3 mt-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Grupo Filho:</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Small"
+                            aria-describedby="inputGroup-sizing-sm" formControlName="grupoFilho">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <!-- <div class="custom-control custom-checkbox mt-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label pt-1" for="customCheck1"
+                            formControlName="analitico">Analitico</label>
+                    </div> -->
+                    <div class="input-group input-group-sm mb-3 mt-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Analitico:</span>
+                        </div>                        
+                            <select id="inputState" class="form-control" formControlName="analitico" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <option value="0" selected>Não</option>
+                                <option value="1">Sim</option>
+                              </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <!-- <div class="custom-control custom-checkbox mt-2">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label pt-1" for="customCheck1"
+                            formControlName="ativo">Ativo</label>
+                    </div> -->
+                    <div class="input-group input-group-sm mb-3 mt-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Ativo:</span>
+                        </div>                        
+                            <select id="inputState" class="form-control" formControlName="ativo" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <option value="0">Não</option>
+                                <option value="1" selected>Sim</option>
+                              </select>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row ">
+                <div class="col-md-3">
+                    <div class="input-group input-group-sm mb-3 mt-1">
+                        <a class="btn btn-sm btn-success text-white" (click)="submit()">Salvar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <div class="col-md-12">
+        <a class="btn btn-danger btn-sm text-white mb-1" (click)="pesquisaNaturezas()">Carregar</a>
+        <table class="table table-hover table-sm text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome da natureza</th>
+                    <th scope="col">Grupo Pai</th>
+                    <th scope="col">Grupo Filho</th>
+                    <th scope="col">Ativo</th>
+                    <th scope="col">Analitico</th>
+    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let natureza of ListaNatureza">
+                    <th scope="row">{{natureza.id}}</th>
+                    <td>{{natureza.nomeNatureza}}</td>
+                    <td>{{natureza.grupoPai}}</td>
+                    <td>{{natureza.grupoFilho}}</td>
+                    <td *ngIf="natureza.ativo == '1'">Sim</td>
+                    <td *ngIf="natureza.ativo == '0'">Não</td>
+                    <td *ngIf="natureza.analitico == '1'">Sim</td>
+                    <td *ngIf="natureza.analitico == '0'">Não</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
